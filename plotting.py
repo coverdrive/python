@@ -1,7 +1,11 @@
 import pylab
 import numpy as np
+from numpy import array, meshgrid
 import matplotlib.pyplot as plt
 from matplotlib.dates import DateFormatter, MonthLocator, WeekdayLocator, MONDAY
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
 
 def plot_pairs(x_vals, y_vals):
