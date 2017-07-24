@@ -44,6 +44,36 @@ def plot_date_series(dates, ds1, ds2=None):
 
     plt.show()
 
+def plot_3D(x_vals, y_vals, f, x_label, y_label, z_label, label):
+    x, y = meshgrid(x_vals, y_vals)
+    z = array([[f(a, b) for a in x_vals] for b in y_vals])
+    # Plot the surface.
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    surf = ax.plot_surface(
+        x,
+        y,
+        z,
+        rstride=1,
+        cstride=1,
+        cmap=cm.coolwarm,
+        linewidth=0,
+        antialiased=False
+    )
+    ax.set_xlabel(x_label)
+    ax.set_ylabel(y_label)
+    ax.set_zlabel(z_label)
+    ax.grid(True)
+    # ax.xaxis.set_major_locator(LinearLocator(21))
+    # ax.xaxis.set_major_formatter(FormatStrFormatter('%.1f'))
+    # ax.yaxis.set_major_locator(LinearLocator(6))
+    # ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+    # ax.zaxis.set_major_locator(LinearLocator(17))
+    # ax.zaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+    fig.colorbar(surf, shrink=0.5, aspect=5)
+    plt.title(label)
+    plt.show()    
+    
 
 if __name__ == '__main__':
     from gen_utils.fin_quant import get_gen_bell_curve
